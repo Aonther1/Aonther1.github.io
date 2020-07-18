@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>balabala影视详情介绍 | Gridea</title>
-<link rel="shortcut icon" href="https://aonther1.github.io/favicon.ico?v=1595061710956">
+<link rel="shortcut icon" href="https://aonther1.github.io/favicon.ico?v=1595069027340">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://aonther1.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="balabala影视详情介绍 | Gridea - Atom Feed" href="https://aonther1.github.io/atom.xml">
@@ -11,14 +11,11 @@
 
 
 
-    <meta name="description" content="
+    <meta name="description" content="注明 ：这篇文章主要介绍一下我在balabala影视中所编写的代码或参与实现的功能，因项目上云出现一些问题，所以项目地址会在后续文章更新时写入🤝
 前台页面详情
-
 1.首页
 
-
-  前台页面主要是自写的css样式，和用jQuery写的一个简单的轮播
-  由于是用ssm框架编写的后台代码所以有关影片的信息是在controller层里查询到，添加到list集合里再通过model传到页面中..." />
+  前台页面主要是自写的css样式，和用jQuery写的一个简单的..." />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -28,7 +25,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://aonther1.github.io">
-  <img class="avatar" src="https://aonther1.github.io/images/avatar.png?v=1595061710956" alt="">
+  <img class="avatar" src="https://aonther1.github.io/images/avatar.png?v=1595069027340" alt="">
   </a>
   <h1 class="site-title">
     Gridea
@@ -88,28 +85,52 @@
                 2020-07-18
               </span>
               <span>
-                1 min read
+                4 min read
               </span>
               
             </div>
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <blockquote>
-<p><strong>前台页面详情</strong></p>
-<blockquote>
-<p>1.首页</p>
-<blockquote>
-<p><img src="https://aonther1.github.io/post-images/1595060313316.png" alt="" loading="lazy"><br>
-  前台页面主要是自写的css样式，和用jQuery写的一个简单的轮播<br>
-  由于是用ssm框架编写的后台代码所以有关影片的信息是在controller层里查询到，添加到list集合里再通过model传到页面中去。具体代码如下：<br>
+                <p>注明 ：这篇文章主要介绍一下我在balabala影视中所编写的代码或参与实现的功能，因项目上云出现一些问题，所以项目地址会在后续文章更新时写入🤝<br>
+<font color='#000000'><strong>前台页面详情</strong><br>
+1.首页</font><br>
+<img src="https://aonther1.github.io/post-images/1595065454903.png" alt="" loading="lazy"><br>
+  <font color='#000000'>前台页面主要是自写的css样式，和用jQuery写的一个简单的轮播<br>
+  由于是用ssm框架编写的后台代码所以有关影片的信息是在controller层里查询到，添加到list集合里再通过model传到页面中去。具体代码如下：</font><br>
 <img src="https://aonther1.github.io/post-images/1595061089559.png" alt="" loading="lazy"><br>
-2.播放页<br>
+<font color='#000000'>2.播放页</font><br>
 <img src="https://aonther1.github.io/post-images/1595061423315.png" alt="" loading="lazy"><br>
-在首页点击想要播放的视频会自动跳转到播放页，如果视频是由多集组成是会默认播放第一集</p>
-</blockquote>
-</blockquote>
-</blockquote>
+  <font color='#000000'>在首页点击想要播放的视频会自动跳转到播放页，如果视频是由多集组成是会默认播放第一集。点开controller层代码：</font><img src="https://aonther1.github.io/post-images/1595062694663.png" alt="" loading="lazy"><br>
+  <font color='#000000'>可以看到我标红的两个参数，其中Integer id 是视频id，但因为有的视频是由多集组成的，但播放页只能一次播放其中一集所以有了第二个参数String vd剧集id。在首页点击想要播放的视频时会传入这两个参数。</font><br/><br>
+  <font color='#000000'>其中Integer id 是点击的视频的id而参数String vd会默认传入1，所以播放页播放的是所点击视频下的第一集。而同一视频下的换级换集功能是由以下代码实现的：</font><br>
+<img src="https://aonther1.github.io/post-images/1595063379707.png" alt="" loading="lazy"><br>
+  <font color='#000000'>list2.duration是此视频的总集数，而list1.ename是现在所播放的集数，通过c:forEach把list2.duration总集数作为循环长度x为参数x==list1.ename修改此按钮的class样式实现的集数列表：</font><img src="https://aonther1.github.io/post-images/1595063719850.png" alt="" loading="lazy"><br>
+  <font color='#000000'>此时点击具体集数按钮在后台会将x作为controller层String vd参数，而因为后台循环中的x就是具体集数所以点击后播放页就会播放相应集数从而实现同一视频下的换级换集功能。</font><br>
+  <font color='#000000'>至于播放器是用DPlayer框架去编写的DPlayer 是一个支持弹幕的 html5 视频播放器。支持 Bilibili 视频和 danmaku，实时视频（HTTP Live Streaming，M3U8格式）以及 FLV 格式。 我们小组在从DPlayer的官方使用文档学习如何使用之后，更改其具体参数实现了播放功能。<br>
+相关代码如下：</font><img src="https://aonther1.github.io/post-images/1595064311012.png" alt="" loading="lazy"><br>
+注明 ：由于登录注册功能主要不是由我负责制作的所以在此就不详细介绍了。<br>
+<font color='#000000'><strong>后台页面详情</strong></font><br>
+<font color='#000000'>1.列表页面</font><br>
+<img src="https://aonther1.github.io/post-images/1595065980585.png" alt="" loading="lazy"><br>
+<font color='#000000'>  后台页面主要是通过bootstrap框架去写的前端代码，页面数据同样是同过ssm框架从数据库中获得的，同时为了实现分页换页功能后端代码如下：</font><br>
+<img src="https://aonther1.github.io/post-images/1595067207777.png" alt="" loading="lazy"><br>
+<font color='#000000'>2.增删改查</font><br>
+<font color='#0000'>  删除十分简单只要传入具体行数id就可以实现删除功能。</font><br/><br>
+<font color='#0000'>  增改的页面用bootstrap中的modal框代替了由于增改框几乎没有差别,所以这里只展示修改框，点击编辑按钮会弹出以下窗口：</font><br>
+<img src="https://aonther1.github.io/post-images/1595067664400.png" alt="" loading="lazy"><br>
+<font color='#0000'>  框中数据主要是通过jQuery传入的：</font><br>
+<img src="https://aonther1.github.io/post-images/1595067777306.png" alt="" loading="lazy"><br>
+<font color='#0000'>  编辑完成后点击提交即可完成修改，controller层代码如下：</font><br>
+<img src="https://aonther1.github.io/post-images/1595067984199.png" alt="" loading="lazy"><br>
+<font color='#0000'>  查寻功能的实现主要是在下拉框选择自己要查哪一列再输入关键字：</font><br>
+<img src="https://aonther1.github.io/post-images/1595068302864.png" alt="" loading="lazy"><br>
+<font color='#0000'>  将下拉框所选数据和关键字传入controller层调用service层的selectCha()方法:</font><br>
+<img src="https://aonther1.github.io/post-images/1595068507460.png" alt="" loading="lazy"><br>
+<font color='#0000'>  String a,String b分别对应下拉框所选数据和关键字，dao层sql语句如下：</font><br>
+<img src="https://aonther1.github.io/post-images/1595068728295.png" alt="" loading="lazy"><br>
+<font color='#0000'>  String a,String b对应a，b。</font></p>
+<p>自此已经介绍完我在balabala影视所负责的所有模块🥂。</p>
 
               </div>
               <div class="toc-container">
