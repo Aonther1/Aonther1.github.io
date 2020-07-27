@@ -1,0 +1,210 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spring Boot+Vue前后端分离开发 | Aonther</title>
+<link rel="shortcut icon" href="https://aonther1.github.io/favicon.ico?v=1595853242642">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://aonther1.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Spring Boot+Vue前后端分离开发 | Aonther - Atom Feed" href="https://aonther1.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="目录
+
+1.什么是前后端分离
+2.为什么要使用前后端分离：
+3.如何实现前后端分离
+4.总结要点：
+
+
+1.什么是前后端分离
+  前后端分离：通俗的来说就是将一个应用的前端代码和后段代码分开来写
+2.为什么要使用前后端分离：
+  因为传统的..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://aonther1.github.io">
+  <img class="avatar" src="https://aonther1.github.io/images/avatar.png?v=1595853242642" alt="">
+  </a>
+  <h1 class="site-title">
+    Aonther
+  </h1>
+  <p class="site-description">
+    且放白鹿青崖间 须行即骑访名山 
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Spring Boot+Vue前后端分离开发
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-07-27
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>目录<br>
+<ul class="markdownIt-TOC">
+<li><a href="#1%E4%BB%80%E4%B9%88%E6%98%AF%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB">1.什么是前后端分离</a></li>
+<li><a href="#2%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB">2.为什么要使用前后端分离：</a></li>
+<li><a href="#3%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB">3.如何实现前后端分离</a></li>
+<li><a href="#4%E6%80%BB%E7%BB%93%E8%A6%81%E7%82%B9">4.总结要点：</a></li>
+</ul>
+</p>
+<h1 id="1什么是前后端分离">1.什么是前后端分离</h1>
+<p>  前后端分离：通俗的来说就是将一个应用的前端代码和后段代码分开来写<br/></p>
+<h1 id="2为什么要使用前后端分离">2.为什么要使用前后端分离：</h1>
+<p>  因为传统的Java Web 开发中，首先由前端完成html静态页面然后交给后端，后端转成jsp。<br/><br>
+  当出现问题时后端开发者会找前端开发者沟通，但此时前端开发者交与后端开发者的html静态页面已经是jsp页面了。前端开发者看到已经不是自己之前写的html静态页面了，里面混合很多标签、表达式等等。此时两人肯定会出现沟通问题，以至于开发效率变低。而且后端开发者需要等待前端开发者完成html静态页面之后再整合成jsp，出错概率比较大，出现bug也不好解决。耦合度太高，所以才出现前后端分离来解决这个问题。<br/><br>
+  使用前后端分离的方式，分开时前端只需要独立编写客户端代码，后端也只需要独立编写服务端代码提供数据接口。<br/><br>
+  前端通过Ajax请求访问后端的数据接口，将Model展示到VIew中。<br/><br>
+  前端开发者需要和后端开发者提前约定好接口文档（URL、参数、数据类型...）,然后分别独立开发即可。<br/><br>
+  如果前端一些页面需要后端的数据前端开发者可以通过造假数据进行测试。不需要依赖与后端。<br/><br>
+  后端开发者只需要考虑数据是否真实有效，不需要考虑前端怎么展示。<br/></p>
+<h1 id="3如何实现前后端分离">3.如何实现前后端分离</h1>
+<p>  现在最主流的实现前后端分离的技术是 Spring Boot + Vue；<br>
+  使用Spring Boot进行后端应用开发；<br>
+  使用Vue进行前端应用开发；<br>
+  当然实现前后端分离方式有很多种，只要前后端独立编写，并能实现数据交互如利用ajax与nodejs服务器（中间层)交互。<br/></p>
+<h1 id="4总结要点">4.总结要点：</h1>
+<p>  前后端分离相当于将一个单体应用拆分成了一个前端应用和一个后端应用。实现了前后端的解耦合，可极大的提升效率。<br>
+  前端负责：数据展示和用户交互。<br>
+  后端负责；数据处理接口。<br>
+  前端HTML通过Ajax去调用基于RESTful后端数据接口（后端开发方式有很多选择）。<br>
+用JSON格式进行数据交互。</p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#1%E4%BB%80%E4%B9%88%E6%98%AF%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB">1.什么是前后端分离</a></li>
+<li><a href="#2%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB">2.为什么要使用前后端分离：</a></li>
+<li><a href="#3%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB">3.如何实现前后端分离</a></li>
+<li><a href="#4%E6%80%BB%E7%BB%93%E8%A6%81%E7%82%B9">4.总结要点：</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://aonther1.github.io/post/balabala-ying-shi-xiang-qing-jie-shao/">
+              <h3 class="post-title">
+                balabala影视详情介绍
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://aonther1.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
